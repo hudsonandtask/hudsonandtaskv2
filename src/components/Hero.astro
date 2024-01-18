@@ -1,0 +1,271 @@
+---
+interface Props {
+	title1: string;
+    title2: string;
+	body: string;
+	href: string;
+}
+
+import Header from '../components/Header.astro';
+
+
+const { href, title1, title2, body } = Astro.props;
+
+const array = [1, 2, 3, 4, 5];
+let hash:any = {};
+
+
+for (let i:number = 0; i < array.length; i++) {
+
+    // hash table is a key value pair
+    // {'0': 1, '1': 2, '2': 3, '3': 4, '4': 5}
+    hash[i] = array[i];
+}
+
+console.log(hash[1]);
+---
+
+
+<section>
+    <div class="hero">
+        <div class="hero-container">
+            <div class="hero-background">
+                <Header menu={["about", "contact"]}/>
+
+                <div class="content-container container mx-auto relative z-10 h-full">
+                    <div class="content">
+                        <div>
+                            <h1 class="text-[340px] leading-none font-extrabold z-30 -ml-6 relative">
+                                {title1}
+                            </h1>
+                            <h1 class="text-blue text-[340px] leading-none font-extrabold z-20 -ml-6 offset">
+                                {title1}
+                            </h1>
+                            <h2 class="-mt-4 mb-4 text-[64px]  leading-none font-bold">
+                                {title2}
+                            </h2>
+                            <p>
+                                {body}
+                            </p>
+                        </div>
+                    
+                    </div>
+                    
+                </div>
+               
+                <div class="circles-container  ">
+                    <div id="leftG" class="circles left z-0">
+                        <div class="circle circle-1 left"></div>
+                        <div class="circle circle-2 left"></div>
+                        <div class="circle circle-3 left"></div>
+                        <div class="circle circle-4 left"></div>
+                    </div>
+                    <div id="rightG" class="circles right z-20">
+                        <div class="circle circle-1"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-3"></div>
+                        <div class="circle circle-4"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+
+const leftGradient = document.getElementById('leftG')
+const rightGradient = document.getElementById('rightG')
+
+// rightGradient?.addEventListener('mouseover', () => {
+//     alert('hovered')
+// })
+
+</script>
+
+<style lang="scss">
+	.hero {
+        background-size: 100% 100%;
+background-position: 0px 0px,0px 0px;
+background-image: radial-gradient(75% 75% at 50% 50%, #44a1ff 0%, #1f85eb 100%);
+        z-index: 0;   
+        color: --blue;
+    }
+
+    .hero-container {
+        width: 100vw;
+        height: 65vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    
+        &:after{
+            background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuZGV2L3N2Z2pzIiB2aWV3Qm94PSIwIDAgNzAwIDcwMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiPjxkZWZzPjxmaWx0ZXIgaWQ9Im5ubm9pc2UtZmlsdGVyIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHByaW1pdGl2ZVVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJsaW5lYXJSR0IiPgoJPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuMTQ0IiBudW1PY3RhdmVzPSI0IiBzZWVkPSIxNSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPgoJPGZlU3BlY3VsYXJMaWdodGluZyBzdXJmYWNlU2NhbGU9IjkiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNiIgc3BlY3VsYXJFeHBvbmVudD0iMjAiIGxpZ2h0aW5nLWNvbG9yPSIjNzk1N0E4IiB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGluPSJ0dXJidWxlbmNlIiByZXN1bHQ9InNwZWN1bGFyTGlnaHRpbmciPgogICAgCQk8ZmVEaXN0YW50TGlnaHQgYXppbXV0aD0iMyIgZWxldmF0aW9uPSI4NyI+PC9mZURpc3RhbnRMaWdodD4KICAJPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgCjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idHJhbnNwYXJlbnQiPjwvcmVjdD48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0iIzc5NTdhOCIgZmlsdGVyPSJ1cmwoI25ubm9pc2UtZmlsdGVyKSI+PC9yZWN0Pjwvc3ZnPg==");
+            width: 100%;
+            height: 100%;
+            top:0;
+            mix-blend-mode: plus-lighter;
+            opacity: .3;
+            content: '';
+            position: absolute;
+        }
+    }
+
+    .content {
+        color: #f4f4f9;
+    }
+
+    .offset {
+        position: absolute;
+        top:3px;
+        left: 4px;
+        filter: blur(2px);
+    }
+
+    .circles {
+        position: absolute;
+        width: 400px;
+        height: 300px;
+        filter: blur(80px);
+        opacity: 1;
+
+        &.left {
+            top: -100px;
+            left: -70px;
+            transform: rotate(180deg);
+        }
+        &.right{
+            bottom: 0px;
+            right: -25px;
+            transform:scale(150%);
+        }
+    }
+
+    .circle {
+        position: absolute;
+        width:215px;
+        height: 215px;
+        border-radius: 50%;
+        margin: 0;
+        transform: translate(0%, 0%); /* Center within parent */
+        transition: transform 1s ease-in-out; /* Smooth animation */
+        filter:contrast(4);
+        &:hover {
+            transform: translate(calc(-20% + 15px), calc(-50% + 15px)); 
+        }
+    }
+
+    .circle-1 {
+        bottom: -15px;
+        right: -105px;
+        width:290px;
+        height: 290px;
+        background-color: #2977ed;
+        opacity: .8;
+        -webkit-animation: cornercircle 6s ease infinite;
+        -moz-animation: cornercircle 6s ease infinite;
+        animation: cornercircle 6s ease-in-out infinite;
+
+        &.left{
+            -webkit-animation: cornercircle 12s ease infinite;
+            -moz-animation: cornercircle 12s ease infinite;
+            animation: cornercircle 12s ease-in-out infinite;
+        }
+    }
+
+    .circle-2 {
+        bottom: -20px;
+        right: 25px;
+        width:215px;
+        height: 215px;
+        background-color: #f35252;
+    }
+
+
+    .circle-3 {
+        bottom: -50px;
+        right: 75px;
+        width:215px;
+        height: 215px;
+        background-color: #2ff588;
+        -webkit-animation: centercircle 16s ease infinite;
+        -moz-animation: centercircle 16s ease infinite;
+        animation: centercircle 16s ease-in-out infinite;
+        &.left{
+            -webkit-animation: centercircle 24s ease infinite;
+            -moz-animation: cornercircle 24s ease infinite;
+            animation: cornercircle 24s ease-in-out infinite;
+        }
+    }
+
+    .circle-4 {
+        bottom: -100px;
+        right: 175px;
+        width:215px;
+        height: 215px;
+        background-color: #f083a0;
+        -webkit-animation: interiorcircle 12s ease-in-out infinite;
+        -moz-animation: interiorcircle 12s ease-in-out infinite;
+        animation: interiorcircle 12s ease-in-out infinite;
+         &.left{
+            -webkit-animation: interiorcircle 16 ease infinite;
+            -moz-animation: interiorcircle 16s ease infinite;
+            animation: interiorcircle 16s ease-in-out infinite;
+        }
+    }
+
+
+    // Corner Circle Animation 
+    @keyframes cornercircle {
+        0%{bottom: -15px; right: -105px; opacity: .8; }
+        50%{bottom: -50px; right: -125px; opacity: 1; }
+        100%{bottom: -15px; right: -105px; opacity: .8; }
+    }
+
+    @-webkit-keyframes cornercircle {
+        0%{bottom: -15px; right: -105px; opacity: .8; }
+        50%{bottom: -50px; right: -125px; opacity: 1; }
+        100%{bottom: -15px; right: -105px; opacity: .8; }
+    }
+
+    @-moz-keyframes cornercircle {
+        0%{bottom: -15px; right: -105px; opacity: .8; }
+        50%{bottom: -50px; right: -125px; opacity: 1; }
+        100%{bottom: -15px; right: -105px; opacity: .8; }
+    }
+
+    // Interior Circle
+
+    @keyframes interiorcircle {
+        0%{bottom: -100px; right: 175px; opacity: .8; }
+        50%{bottom: -50px; right: 100px; opacity: 1; }
+        100%{bottom: -100px; right: 175px; opacity: .8; }
+    }
+
+    @-webkit-keyframes  interiorcircle {
+        0%{bottom: -100px; right: 175px; opacity: .8; }
+        50%{bottom: -50px; right: 100px; opacity: 1; }
+        100%{bottom: -100px; right: 175px; opacity: .8; }
+    }
+
+    @-moz-keyframes interiorcircle {
+        0%{bottom: -100px; right: 175px; opacity: .8; }
+        50%{bottom: -50px; right: 100px; opacity: 1; }
+        100%{bottom: -100px; right: 175px; opacity: .8; }
+    }
+    
+    // Center Circle
+
+    @keyframes centercircle {
+        0%{bottom: -50px; right: 175px; }
+        50%{bottom: 0px; right: 100px;  }
+        100%{bottom: -50px; right: 175px; }
+    }
+
+</style>
